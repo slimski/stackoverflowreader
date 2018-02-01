@@ -12,6 +12,11 @@
 		62E0C6FE201DE310006EE011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62E0C6FD201DE310006EE011 /* Assets.xcassets */; };
 		62E0C701201DE310006EE011 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E0C6FF201DE310006EE011 /* LaunchScreen.storyboard */; };
 		62E0C704201DE310006EE011 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E0C703201DE310006EE011 /* main.m */; };
+		81B2E35DBA50592BEF50D433 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B2E7D709ED6BAB2C17B4C0 /* Constants.m */; };
+		81B2E4E86E3452FA52779AD1 /* QuestionsTableDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B2EBD91590C7C3C6BFFFAB /* QuestionsTableDataManager.m */; };
+		81B2E59D8F7CCA763ACBFB97 /* QuestionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B2E76A6D2D939B0859BC4A /* QuestionModel.m */; };
+		81B2E6B0150F72E3FB3A4D86 /* ModelMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B2E33D7A085F0198244C05 /* ModelMapper.m */; };
+		81B2EAA60D30E5BD6B364FDA /* ApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B2E6AFC89A92B79F044187 /* ApiService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,16 @@
 		62E0C700201DE310006EE011 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62E0C702201DE310006EE011 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62E0C703201DE310006EE011 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		81B2E33D7A085F0198244C05 /* ModelMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelMapper.m; sourceTree = "<group>"; };
+		81B2E62E2FCF35D32AF5BA0E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		81B2E6AFC89A92B79F044187 /* ApiService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiService.m; sourceTree = "<group>"; };
+		81B2E746306FCA5ACBB09C74 /* QuestionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionModel.h; sourceTree = "<group>"; };
+		81B2E76A6D2D939B0859BC4A /* QuestionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionModel.m; sourceTree = "<group>"; };
+		81B2E7D709ED6BAB2C17B4C0 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		81B2E836DE4A17DDA81E47B8 /* ModelMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelMapper.h; sourceTree = "<group>"; };
+		81B2EB22FB04A1B6CEDC3141 /* QuestionsTableDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsTableDataManager.h; sourceTree = "<group>"; };
+		81B2EB697A10AAACECDC1CA5 /* ApiService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiService.h; sourceTree = "<group>"; };
+		81B2EBD91590C7C3C6BFFFAB /* QuestionsTableDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsTableDataManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +79,16 @@
 				62E0C6FF201DE310006EE011 /* LaunchScreen.storyboard */,
 				62E0C702201DE310006EE011 /* Info.plist */,
 				62E0C703201DE310006EE011 /* main.m */,
+				81B2E6AFC89A92B79F044187 /* ApiService.m */,
+				81B2EB697A10AAACECDC1CA5 /* ApiService.h */,
+				81B2E7D709ED6BAB2C17B4C0 /* Constants.m */,
+				81B2E62E2FCF35D32AF5BA0E /* Constants.h */,
+				81B2E76A6D2D939B0859BC4A /* QuestionModel.m */,
+				81B2E746306FCA5ACBB09C74 /* QuestionModel.h */,
+				81B2EBD91590C7C3C6BFFFAB /* QuestionsTableDataManager.m */,
+				81B2EB22FB04A1B6CEDC3141 /* QuestionsTableDataManager.h */,
+				81B2E33D7A085F0198244C05 /* ModelMapper.m */,
+				81B2E836DE4A17DDA81E47B8 /* ModelMapper.h */,
 			);
 			path = StackoverflowReader;
 			sourceTree = "<group>";
@@ -141,6 +166,11 @@
 				62E0C6F9201DE310006EE011 /* ViewController.m in Sources */,
 				62E0C704201DE310006EE011 /* main.m in Sources */,
 				62E0C6F6201DE310006EE011 /* AppDelegate.m in Sources */,
+				81B2EAA60D30E5BD6B364FDA /* ApiService.m in Sources */,
+				81B2E35DBA50592BEF50D433 /* Constants.m in Sources */,
+				81B2E59D8F7CCA763ACBFB97 /* QuestionModel.m in Sources */,
+				81B2E4E86E3452FA52779AD1 /* QuestionsTableDataManager.m in Sources */,
+				81B2E6B0150F72E3FB3A4D86 /* ModelMapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
