@@ -52,6 +52,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		621F79DD20230AA300960D8E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				62E0C6FF201DE310006EE011 /* LaunchScreen.storyboard */,
+				62E0C6F4201DE30F006EE011 /* AppDelegate.h */,
+				62E0C6F5201DE310006EE011 /* AppDelegate.m */,
+				62E0C6FD201DE310006EE011 /* Assets.xcassets */,
+				62E0C702201DE310006EE011 /* Info.plist */,
+				62E0C703201DE310006EE011 /* main.m */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		621F79DE20230AD500960D8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				81B2E76A6D2D939B0859BC4A /* QuestionModel.m */,
+				81B2E746306FCA5ACBB09C74 /* QuestionModel.h */,
+				81B2E33D7A085F0198244C05 /* ModelMapper.m */,
+				81B2E836DE4A17DDA81E47B8 /* ModelMapper.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		621F79DF20230AEB00960D8E /* ApiService */ = {
+			isa = PBXGroup;
+			children = (
+				81B2E6AFC89A92B79F044187 /* ApiService.m */,
+				81B2EB697A10AAACECDC1CA5 /* ApiService.h */,
+			);
+			path = ApiService;
+			sourceTree = "<group>";
+		};
+		621F79E020230B0800960D8E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		621F79E120230B2300960D8E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				62E0C6F7201DE310006EE011 /* ViewController.h */,
+				62E0C6F8201DE310006EE011 /* ViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		62E0C6E8201DE30F006EE011 = {
 			isa = PBXGroup;
 			children = (
@@ -71,24 +120,15 @@
 		62E0C6F3201DE30F006EE011 /* StackoverflowReader */ = {
 			isa = PBXGroup;
 			children = (
-				62E0C6F4201DE30F006EE011 /* AppDelegate.h */,
-				62E0C6F5201DE310006EE011 /* AppDelegate.m */,
-				62E0C6F7201DE310006EE011 /* ViewController.h */,
-				62E0C6F8201DE310006EE011 /* ViewController.m */,
-				62E0C6FD201DE310006EE011 /* Assets.xcassets */,
-				62E0C6FF201DE310006EE011 /* LaunchScreen.storyboard */,
-				62E0C702201DE310006EE011 /* Info.plist */,
-				62E0C703201DE310006EE011 /* main.m */,
-				81B2E6AFC89A92B79F044187 /* ApiService.m */,
-				81B2EB697A10AAACECDC1CA5 /* ApiService.h */,
+				621F79DD20230AA300960D8E /* Application */,
+				621F79DF20230AEB00960D8E /* ApiService */,
+				621F79E120230B2300960D8E /* Controllers */,
+				621F79DE20230AD500960D8E /* Model */,
+				621F79E020230B0800960D8E /* Views */,
 				81B2E7D709ED6BAB2C17B4C0 /* Constants.m */,
 				81B2E62E2FCF35D32AF5BA0E /* Constants.h */,
-				81B2E76A6D2D939B0859BC4A /* QuestionModel.m */,
-				81B2E746306FCA5ACBB09C74 /* QuestionModel.h */,
 				81B2EBD91590C7C3C6BFFFAB /* QuestionsTableDataManager.m */,
 				81B2EB22FB04A1B6CEDC3141 /* QuestionsTableDataManager.h */,
-				81B2E33D7A085F0198244C05 /* ModelMapper.m */,
-				81B2E836DE4A17DDA81E47B8 /* ModelMapper.h */,
 			);
 			path = StackoverflowReader;
 			sourceTree = "<group>";
