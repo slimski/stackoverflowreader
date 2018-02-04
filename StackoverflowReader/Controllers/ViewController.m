@@ -63,6 +63,7 @@
 #pragma mark Setup UI
 
 - (void)setupTableView {
+    // TODO: add page loading on scroll
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
