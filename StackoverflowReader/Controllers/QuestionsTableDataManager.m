@@ -7,6 +7,7 @@
 #import "ApiService.h"
 #import "QuestionModel.h"
 #import "ModelMapper.h"
+#import "QuestionTableViewCell.h"
 
 @interface QuestionsTableDataManager ()
 
@@ -14,11 +15,13 @@
 
 @end
 
-@implementation QuestionsTableDataManager {
-
-}
+@implementation QuestionsTableDataManager
 
 - (void)prepareDataForText:(NSString *)text completionHandler:(void (^)(BOOL))completionHandler {
+    if (text.length == 0) {
+        self.questions = [NSArray array];
+    }
+
     __weak QuestionsTableDataManager *weakSelf = self;
     [ApiService getQuestionsWithString:text
                      CompletionHandler:^(NSDictionary *dictionary, NSError *error) {
@@ -41,10 +44,16 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.text = self.questions[indexPath.row].title;
+    QuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[QuestionTableViewCell cellIdentifier]];
+    QuestionModel *question = self.questions[indexPath.row];
+    [cell setupWithTitle:question.title andAuthor:question.ownerDisplayName];
+
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    QuestionModel *question = self.questions[indexPath.row];
+    return [QuestionTableViewCell calculateHeightForTitle:question.title andWidth:tableView.frame.size.width];
+}
 
 @end

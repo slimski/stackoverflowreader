@@ -6,7 +6,6 @@
 #import "QuestionModel.h"
 
 
-@implementation QuestionModel {
+@implementation QuestionModel
 
-}
 @end

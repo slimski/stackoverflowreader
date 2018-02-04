@@ -5,7 +5,19 @@
 
 #import "Constants.h"
 
+#pragma mark Api
 
-NSString *const baseUrl = @"https://api.stackexchange.com/2.2/";
-NSString *const searchUrl = @"search?order=desc&sort=activity&intitle=%@&site=stackoverflow";
+NSString *const BaseUrl = @"https://api.stackexchange.com/2.2/";
+NSString *const SearchUrl = @"search?order=desc&sort=activity&intitle=%@&site=stackoverflow";
 
+
+#pragma mark Locale
+
+NSString *MainTitle = @"Questions";
+NSString *PlaceholderText = @"Type text to search questions";
+NSString *AuthorTitleHeader = @"Author";
+
+
+#pragma mark numbers
+
+NSInteger MinimalCountOfLetters = 3;

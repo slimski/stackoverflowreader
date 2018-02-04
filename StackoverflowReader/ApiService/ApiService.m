@@ -7,12 +7,10 @@
 #import "Constants.h"
 
 
-@implementation ApiService {
-
-}
+@implementation ApiService
 
 + (void)getQuestionsWithString:(NSString *)searchString CompletionHandler: (void (^)(NSDictionary *, NSError *))completionHandler {
-    NSString *search = [NSString stringWithFormat:searchUrl, searchString];
+    NSString *search = [NSString stringWithFormat:SearchUrl, searchString];
     NSURL *url = [NSURL URLWithString:search relativeToURL:[self baseUrl]];
     [self requestUrl:url completionHandler:completionHandler];
 }
@@ -40,6 +38,7 @@
 }
 
 + (NSURL *)baseUrl {
-    return [NSURL URLWithString:baseUrl];
+    return [NSURL URLWithString:BaseUrl];
 }
+
 @end

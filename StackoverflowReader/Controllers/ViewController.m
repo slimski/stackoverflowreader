@@ -8,67 +8,104 @@
 
 #import "ViewController.h"
 #import "QuestionsTableDataManager.h"
+#import "QuestionTableViewCell.h"
+#import "Constants.h"
+#import "UILayoutGuide+Extensions.h"
 
-@interface ViewController () <UISearchResultsUpdating>
+@interface ViewController () <UISearchResultsUpdating, UISearchBarDelegate>
 
-@property (strong, nonatomic) UISearchController *searchController;
-@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) QuestionsTableDataManager *tableDataManager;
+@property (strong, nonatomic) NSString *searchText;
+
+@property (weak, nonatomic) UITableView *tableView;
+@property (weak, nonatomic) UIActivityIndicatorView *indicator;
+
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    [self setupSearchController];
-
-
-    [self setupTableView];
-}
-
-#pragma mark Setup UI
-
-- (void)setupTableView {
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
-
-    self.tableDataManager = [[QuestionsTableDataManager alloc] init];
-    self.tableView.delegate = self.tableDataManager;
-    self.tableView.dataSource = self.tableDataManager;
-
-    [self.view addSubview:self.tableView];
-
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-
-    [NSLayoutConstraint activateConstraints:@[
-            [self.tableView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
-            [self.tableView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor],
-            [self.tableView.leftAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leftAnchor],
-            [self.tableView.rightAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.rightAnchor]
-
-    ]];
-}
-
-- (void)setupSearchController {
-    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    self.searchController.searchResultsUpdater = self;
-    self.navigationItem.searchController = self.searchController;
-}
-
-
-
 - (void)performSearchWithText:(NSString *)text {
+    if ([self.searchText isEqualToString:text]) {
+        return;
+    }
+
+    self.searchText = text;
+    [self.indicator startAnimating];
     [self.tableDataManager prepareDataForText:text completionHandler:^(BOOL completed) {
         if (!completed) {
             // TODO present error
             return;
         }
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.indicator stopAnimating];
+            self.tableView.hidden = text.length == 0;
             [self.tableView reloadData];
         });
     }];
 }
+
+
+#pragma mark ViewController lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    self.view.backgroundColor = UIColor.lightGrayColor;
+    self.title = MainTitle;
+
+    [self setupSearchController];
+    [self setupPlaceholder];
+    [self setupTableView];
+    [self setupIndicator];
+}
+
+
+#pragma mark Setup UI
+
+- (void)setupTableView {
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+    self.tableDataManager = [[QuestionsTableDataManager alloc] init];
+    tableView.delegate = self.tableDataManager;
+    tableView.dataSource = self.tableDataManager;
+
+    [self.view addSubview:tableView];
+
+    [tableView registerClass:[QuestionTableViewCell class] forCellReuseIdentifier:[QuestionTableViewCell cellIdentifier]];
+    [self.view.safeAreaLayoutGuide bindViewToEdges:tableView];
+    tableView.hidden = YES;
+
+    self.tableView = tableView;
+}
+
+
+- (void)setupSearchController {
+    UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    searchController.searchResultsUpdater = self;
+    searchController.searchBar.delegate = self;
+    self.navigationItem.searchController = searchController;
+}
+
+- (void)setupIndicator {
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [self.view addSubview:indicator];
+    [self.view.safeAreaLayoutGuide bindViewToCenter:indicator];
+
+    self.indicator = indicator;
+}
+
+
+- (void)setupPlaceholder {
+    UILabel *placeholder = [[UILabel alloc] init];
+    placeholder.text = PlaceholderText;
+    placeholder.textAlignment = NSTextAlignmentCenter;
+    placeholder.translatesAutoresizingMaskIntoConstraints = NO;
+
+    [self.view addSubview:placeholder];
+    [self.view.safeAreaLayoutGuide bindViewToEdges:placeholder];
+}
+
 
 #pragma mark UISearchResultsUpdating
 
@@ -76,7 +113,7 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
 
     NSString *searchText = searchController.searchBar.text;
-    if (searchText == nil || searchText.length < 3) {
+    if (searchText == nil || (searchText.length > 0 && searchText.length < MinimalCountOfLetters)) {
         return;
     }
     [self performSelector:@selector(performSearchWithText:)
@@ -84,5 +121,15 @@
                afterDelay:0.5];
 }
 
+
+#pragma mark UISearchBarDelegate
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    searchBar.text = self.searchText;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    searchBar.text = @"";
+}
 
 @end

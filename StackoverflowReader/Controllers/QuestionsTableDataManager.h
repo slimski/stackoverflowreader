@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface QuestionsTableDataManager : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface QuestionsTableDataManager : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 - (void)prepareDataForText:(NSString *)text completionHandler:(void (^)(BOOL))completionHandler;
 

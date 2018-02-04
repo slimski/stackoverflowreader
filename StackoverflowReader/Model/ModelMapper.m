@@ -6,9 +6,8 @@
 #import "ModelMapper.h"
 
 
-@implementation ModelMapper {
+@implementation ModelMapper
 
-}
 + (QuestionModel *)getModelFromJson:(NSDictionary *)json {
     QuestionModel *result = [[QuestionModel alloc] init];
     result.title = json[@"title"];

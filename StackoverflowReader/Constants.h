@@ -5,5 +5,19 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const baseUrl;
-extern NSString *const searchUrl;
+#pragma mark Api
+
+extern NSString *const BaseUrl;
+extern NSString *const SearchUrl;
+
+
+#pragma mark Locale
+
+extern NSString *MainTitle;
+extern NSString *PlaceholderText;
+extern NSString *AuthorTitleHeader;
+
+
+#pragma mark numbers
+
+extern NSInteger MinimalCountOfLetters;
