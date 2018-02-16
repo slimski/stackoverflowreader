@@ -25,6 +25,11 @@
     __weak QuestionsTableDataManager *weakSelf = self;
     [ApiService getQuestionsWithString:text
                      CompletionHandler:^(NSDictionary *dictionary, NSError *error) {
+                         QuestionsTableDataManager *strongSelf = weakSelf;
+                         if (strongSelf == nil) {
+                             return;
+                         }
+                         
                          if (error != nil) {
                              completionHandler(NO);
                              return;
@@ -34,8 +39,10 @@
                          for (NSDictionary *model in rawData) {
                              [result addObject:[ModelMapper getModelFromJson:model]];
                          }
-                         weakSelf.questions = [result copy];
-                        completionHandler(YES);
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             strongSelf.questions = [result copy];
+                             completionHandler(YES);
+                         });
                      }];
 }
 

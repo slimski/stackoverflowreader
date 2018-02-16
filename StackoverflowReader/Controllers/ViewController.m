@@ -36,11 +36,9 @@
             // TODO present error
             return;
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.indicator stopAnimating];
-            self.tableView.hidden = text.length == 0;
-            [self.tableView reloadData];
-        });
+        [self.indicator stopAnimating];
+        self.tableView.hidden = text.length == 0;
+        [self.tableView reloadData];
     }];
 }
 
